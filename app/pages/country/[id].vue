@@ -1,0 +1,49 @@
+<script setup lang="ts">
+import type { Country } from '~~/types/country'
+
+const route = useRoute()
+const { data: countryData } = await useFetch<Country[]>(`https://restcountries.com/v3.1/alpha/${route.params.id}`)
+const country = computed(() => countryData.value?.[0])
+</script>
+
+<template>
+  <div v-if="country" class="p-8 max-w-7xl mx-auto">
+    <button @click="$router.back()" class="mb-10 px-6 py-2 bg-white dark:bg-gray-800 shadow-md rounded-md">
+      ← Back
+    </button>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <img :src="country.flags.svg" :alt="country.flags.alt" class="w-full rounded-lg shadow-md" />
+
+      <section>
+        <h1 class="text-4xl font-bold mb-8">{{ country.name.common }}</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+          <ul class="space-y-2">
+            <li><strong>Official Name:</strong> {{ country.name.official }}</li>
+            <li><strong>Population:</strong> {{ country.population.toLocaleString() }}</li>
+            <li><strong>Region:</strong> {{ country.region }}</li>
+            <li><strong>Sub Region:</strong> {{ country.subregion }}</li>
+            <li><strong>Capital:</strong> {{ country.capital?.join(', ') }}</li>
+          </ul>
+          <ul class="space-y-2">
+            <li><strong>Top Level Domain:</strong> {{ country.tld?.join(', ') }}</li>
+            <li><strong>Currencies:</strong> {{ Object.values(country.currencies || {}).map(c => c.name).join(', ') }}</li>
+            <li><strong>Languages:</strong> {{ Object.values(country.languages || {}).join(', ') }}</li>
+          </ul>
+        </div>
+
+        <div v-if="country.borders?.length" class="flex flex-wrap items-center gap-3">
+          <span class="font-bold">Border Countries:</span>
+          <NuxtLink
+              v-for="border in country.borders"
+              :key="border"
+              :to="`/country/${border}`"
+              class="px-4 py-1 bg-white dark:bg-gray-800 shadow-sm border dark:border-gray-700 rounded text-sm"
+          >
+            {{ border }}
+          </NuxtLink>
+        </div>
+      </section>
+    </div>
+  </div>
+</template>
