@@ -7,10 +7,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   nitro: {
-    preset: 'bun'
+    preset: 'bun',
+    prerender: {
+      crawlLinks: false
+    }
   },
   routeRules: {
     '/': { prerender: true },
-    '/country/**': { isr: true },
+    '/country/**': { static: true },
   }
 })
