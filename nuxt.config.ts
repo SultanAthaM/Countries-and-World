@@ -13,17 +13,14 @@ export default defineNuxtConfig({
     enabled: !IS_PROD
   },
   nitro: {
-    preset: IS_PROD ? 'vercel' : 'bun',
-    prerender: {
-      crawlLinks: false
-    }
+    preset: IS_PROD ? 'vercel' : 'bun'
   },
   routeRules: {
     '/': {
       prerender: true
     },
     '/country/**': {
-      static: true
+      isr: 60 * 60 * 24
     },
   }
 })
