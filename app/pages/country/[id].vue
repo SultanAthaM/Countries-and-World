@@ -7,13 +7,23 @@ const country = computed(() => countryData.value?.[0])
 </script>
 
 <template>
-  <div v-if="country" class="p-8 max-w-7xl mx-auto">
-    <button @click="$router.back()" class="mb-10 px-6 py-2 bg-white dark:bg-gray-800 shadow-md rounded-md">
+  <div
+	  v-if="country"
+	  class="p-8 max-w-7xl mx-auto"
+  >
+    <button
+	    @click="$router.back()"
+	    class="mb-10 px-6 py-2 bg-white dark:bg-gray-800 shadow-md rounded-md"
+    >
       ← Back
     </button>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <img :src="country.flags.svg" :alt="country.flags.alt" class="w-full rounded-lg shadow-md" />
+      <img
+	      :src="country.flags.svg"
+	      :alt="country.flags.alt"
+	      class="w-full rounded-lg shadow-md"
+      />
 
       <section>
         <h1 class="text-4xl font-bold mb-8">{{ country.name.common }}</h1>
@@ -32,13 +42,16 @@ const country = computed(() => countryData.value?.[0])
           </ul>
         </div>
 
-        <div v-if="country.borders?.length" class="flex flex-wrap items-center gap-3">
+        <div
+	        v-if="country.borders?.length"
+	        class="flex flex-wrap items-center gap-3"
+        >
           <span class="font-bold">Border Countries:</span>
           <NuxtLink
-              v-for="border in country.borders"
-              :key="border"
-              :to="`/country/${border}`"
-              class="px-4 py-1 bg-white dark:bg-gray-800 shadow-sm border dark:border-gray-700 rounded text-sm"
+	          v-for="border in country.borders"
+	          :key="border"
+	          :to="`/country/${border}`"
+	          class="px-4 py-1 bg-white dark:bg-gray-800 shadow-sm border dark:border-gray-700 rounded text-sm"
           >
             {{ border }}
           </NuxtLink>

@@ -62,18 +62,27 @@ const filteredCountries = computed(() => {
       />
 
 	    <div class="flex flex-col md:flex-row gap-4 justify-between">
-		    <select v-model="selectedSort" class="p-3 shadow-md rounded-md dark:bg-gray-800">
+		    <select
+			    v-model="selectedSort"
+			    class="p-3 shadow-md rounded-md dark:bg-gray-800"
+		    >
 			    <option value="">Sort by</option>
 			    <option value="population">Sort by Population</option>
 			    <option value="name">Sort by Name</option>
 		    </select>
 
-		    <select v-model="selectedOrder" class="p-3 shadow-md rounded-md dark:bg-gray-800">
+		    <select
+			    v-model="selectedOrder"
+			    class="p-3 shadow-md rounded-md dark:bg-gray-800"
+		    >
 			    <option value="desc">Descending</option>
 			    <option value="asc">Ascending</option>
 		    </select>
 
-	      <select v-model="selectedRegion" class="p-3 shadow-md rounded-md dark:bg-gray-800">
+	      <select
+		      v-model="selectedRegion"
+		      class="p-3 shadow-md rounded-md dark:bg-gray-800"
+	      >
 	        <option value="">Filter by Region</option>
 	        <option v-for="region in regions" :value="region" :key="region">{{ region }}</option>
 	      </select>
@@ -88,7 +97,13 @@ const filteredCountries = computed(() => {
         :to="`/country/${country.cca3}`"
         class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105"
       >
-        <img :src="country.flags.svg" :alt="country.flags.alt" class="w-full h-48 object-cover border-b dark:border-gray-700" />
+        <img
+	        :src="country.flags.svg"
+	        :alt="country.flags.alt"
+	        loading="lazy"
+	        class="w-full h-48 object-cover border-b dark:border-gray-700"
+        />
+
         <div class="p-6">
           <h2 class="text-xl font-bold mb-4">{{ country.name.common }}</h2>
           <p class="text-sm"><strong>Population:</strong> {{ country.population.toLocaleString() }}</p>
