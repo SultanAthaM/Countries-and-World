@@ -20,6 +20,15 @@ export default defineNuxtConfig(async () => {
 	const topCountryRoutes = await getTop12CountryRoutes()
 	
 	return {
+		app: {
+			head: {
+				htmlAttrs: {
+					lang: 'en'
+				},
+				title: 'Countries & World',
+				titleTemplate: '%s | Countries & World'
+			}
+		},
 		future: {
 			compatibilityVersion: 4
 		},
