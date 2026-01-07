@@ -24,17 +24,15 @@ export default defineNuxtConfig(async () => {
 			compatibilityVersion: 4
 		},
 		compatibilityDate: '2024-04-03',
-		
-		modules: ['@nuxtjs/tailwindcss'],
-		
+		modules: [
+			'@nuxtjs/tailwindcss',
+		],
 		devtools: {
 			enabled: !isProd
 		},
-		
 		nitro: {
 			preset: isProd ? 'vercel' : 'bun'
 		},
-		
 		routeRules: {
 			'/': {
 				prerender: true
