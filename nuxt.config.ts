@@ -1,26 +1,57 @@
-const IS_PROD = process.env.NODE_ENV === 'production'
+import type { Country } from './types/country'
+
+const isProd = process.env.NODE_ENV === 'production'
+const interval = 60 * 60 * 24 // 24 hours
+
+async function getTop12CountryRoutes() {
+  const fields = 'cca3,population'
+  const res = await fetch(`https://restcountries.com/v3.1/all?fields=${fields}`)
+  const countries: Country[] = await res.json()
+
+  return countries
+      .sort((a, b) => b.population - a.population)
+      .slice(0, 12)
+      .map(c => `/country/${c.cca3}`)
+}
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-  future: {
-    compatibilityVersion: 4,
-  },
-  modules: [
-      '@nuxtjs/tailwindcss'
-  ],
-  compatibilityDate: '2024-04-03',
-  devtools: {
-    enabled: !IS_PROD
-  },
-  nitro: {
-    preset: IS_PROD ? 'vercel' : 'bun'
-  },
-  routeRules: {
-    '/': {
-      prerender: true
+// @ts-ignore
+export default defineNuxtConfig(async () => {
+  const topCountryRoutes = await getTop12CountryRoutes()
+
+  return {
+    future: {
+      compatibilityVersion: 4
     },
-    '/country/**': {
-      isr: 60 * 60 * 24
+    compatibilityDate: '2024-04-03',
+
+    modules: ['@nuxtjs/tailwindcss'],
+
+    devtools: {
+      enabled: !isProd
     },
+
+    nitro: {
+      preset: isProd ? 'vercel' : 'bun'
+    },
+
+    routeRules: {
+      '/': {
+        prerender: true
+      },
+      ...Object.fromEntries(
+          topCountryRoutes.map(route => [
+            route,
+            {
+              prerender: true,
+              revalidate: interval
+            }
+          ])
+      ),
+      '/country/**': {
+        isr: interval
+      }
+    }
   }
 })
+
