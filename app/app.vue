@@ -27,6 +27,16 @@ const open = ref(false)
 								<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"/>
 							</NuxtLink>
 						</li>
+						<li>
+							<NuxtLink
+								to="/random"
+								class="group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+								active-class="text-blue-600 dark:text-blue-400"
+							>
+								Random
+								<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"/>
+							</NuxtLink>
+						</li>
 					</ul>
 				</nav>
 
@@ -70,6 +80,7 @@ const open = ref(false)
 						<h3 class="text-lg font-semibold">
 							Countries<span class="text-blue-600"> &</span> World
 						</h3>
+
 						<p class="mt-3 text-sm text-gray-600 dark:text-gray-500">
 							Exploring countries and global data, clearly and responsibly.
 						</p>
