@@ -7,5 +7,5 @@ const CODES = [
 
 export default defineEventHandler((event) => {
 	const code = CODES[Math.floor(Math.random() * CODES.length)]
-	return sendRedirect(event, `/country/${code}`, 302)
+	return sendRedirect(event, `/country/${code}`)
 })

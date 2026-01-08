@@ -29,7 +29,7 @@ const open = ref(false)
 						</li>
 						<li>
 							<NuxtLink
-								to="/random"
+								to="/api/random"
 								class="group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
 								active-class="text-blue-600 dark:text-blue-400"
 							>
