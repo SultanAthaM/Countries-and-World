@@ -53,7 +53,7 @@ const filteredCountries = computed(() => {
 
 <template>
   <main class="p-6 max-w-7xl mx-auto">
-	  <h1 class="text-3xl md:text-5xl text-center md:text-left font-bold mb-8">
+	  <h1 class="text-5xl text-center md:text-left font-bold mb-8">
 		  Countries
 	  </h1>
 
