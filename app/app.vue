@@ -27,16 +27,17 @@ const open = ref(false)
 								<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"/>
 							</NuxtLink>
 						</li>
-						<li>
-							<NuxtLink
-								to="/api/random"
-								class="group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
-								active-class="text-blue-600 dark:text-blue-400"
-							>
-								Random
-								<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"/>
-							</NuxtLink>
-						</li>
+<!--						<li>-->
+<!--							<NuxtLink-->
+<!--								to="/api/random"-->
+<!--								class="group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"-->
+<!--								active-class="text-blue-600 dark:text-blue-400"-->
+<!--								:prefetch="false"-->
+<!--							>-->
+<!--								Random-->
+<!--								<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"/>-->
+<!--							</NuxtLink>-->
+<!--						</li>-->
 					</ul>
 				</nav>
 

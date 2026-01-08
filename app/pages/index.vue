@@ -64,6 +64,7 @@ const filteredCountries = computed(() => {
 	    <div class="flex flex-col md:flex-row gap-4 justify-between">
 		    <select
 			    v-model="selectedSort"
+			    aria-label="Sort"
 			    class="p-3 shadow-md rounded-md dark:bg-gray-800"
 		    >
 			    <option value="">Sort by</option>
@@ -73,6 +74,7 @@ const filteredCountries = computed(() => {
 
 		    <select
 			    v-model="selectedOrder"
+			    aria-label="Sort order"
 			    class="p-3 shadow-md rounded-md dark:bg-gray-800"
 		    >
 			    <option value="desc">Descending</option>
@@ -81,6 +83,7 @@ const filteredCountries = computed(() => {
 
 	      <select
 		      v-model="selectedRegion"
+		      aria-label="Filter by region"
 		      class="p-3 shadow-md rounded-md dark:bg-gray-800"
 	      >
 	        <option value="">Filter by Region</option>
@@ -101,6 +104,7 @@ const filteredCountries = computed(() => {
 	        :src="country.flags.svg"
 	        :alt="country.flags.alt"
 	        loading="lazy"
+	        fetchpriority="low"
 	        class="w-full h-48 object-cover border-b dark:border-gray-700"
         />
 
