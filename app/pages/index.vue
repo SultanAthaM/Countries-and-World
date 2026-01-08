@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { Country } from '~~/types/country'
 
+useSeoMeta({
+	title: 'Countries',
+	description: 'Browse countries by region, population, and name. Explore detailed country data in one place.'
+})
+
 const fields = 'name,cca3,flags,population,region,capital'
 const { data: countries, pending } = await useFetch<Country[]>(`https://restcountries.com/v3.1/all?fields=${fields}`)
 const regions = [...new Set(

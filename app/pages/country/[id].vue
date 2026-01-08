@@ -2,8 +2,18 @@
 import type { Country } from '~~/types/country'
 
 const route = useRoute()
-const { data: countryData } = await useFetch<Country[]>(`https://restcountries.com/v3.1/alpha/${route.params.id}`)
-const country = computed(() => countryData.value?.[0])
+const { data: countryData } = await useFetch<Country[]>(
+	`https://restcountries.com/v3.1/alpha/${route.params.id}`
+)
+
+const country = countryData.value?.[0]
+
+if (country) {
+	useSeoMeta({
+		title: country.name.common,
+		description: `Learn about ${country.name.common}, its population, capital, and region.`
+	})
+}
 </script>
 
 <template>
