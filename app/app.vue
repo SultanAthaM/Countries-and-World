@@ -55,9 +55,9 @@ const open = ref(false)
 		<footer class="shrink-0 border-t px-6 md:px-24 py-12 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
 			<div class="grid grid-cols-1 px-2 md:px-12 md:grid-cols-4 gap-8">
 				<div class="md:col-span-1">
-					<h3 class="text-lg font-semibold">
+					<h2 class="text-lg font-semibold">
 						Countries<span class="text-blue-600"> &</span> World
-					</h3>
+					</h2>
 
 					<p class="mt-3 text-sm text-gray-600 dark:text-gray-500">
 						Exploring countries and global data, clearly and responsibly.
