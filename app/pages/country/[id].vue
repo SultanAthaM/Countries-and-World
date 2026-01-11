@@ -32,6 +32,7 @@ if (country) {
       <img
 	      :src="country.flags.svg"
 	      :alt="country.flags.alt"
+	      fetchpriority="high"
 	      class="w-full rounded-lg shadow-md"
       />
 
