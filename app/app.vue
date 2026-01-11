@@ -65,7 +65,7 @@ const open = ref(false)
 				</div>
 
 				<div>
-					<h4 class="font-medium mb-3">Navigation</h4>
+					<h3 class="font-medium mb-3">Navigation</h3>
 
 					<nav aria-label="Footer navigation">
 						<MenuItem
@@ -77,7 +77,7 @@ const open = ref(false)
 				</div>
 
 				<div>
-					<h4 class="font-medium mb-3">Resources</h4>
+					<h3 class="font-medium mb-3">Resources</h3>
 
 					<MenuItem
 						:items="resourceMenu"
@@ -87,7 +87,7 @@ const open = ref(false)
 				</div>
 
 				<div>
-					<h4 class="font-medium mb-3">Legal</h4>
+					<h3 class="font-medium mb-3">Legal</h3>
 
 					<MenuItem
 						:items="legalMenu"
