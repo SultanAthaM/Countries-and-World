@@ -1,14 +1,41 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import MenuItem from "~~/components/MenuItem.vue";
 import { navigationMenu, resourceMenu, legalMenu } from "~~/config/menus.ts";
 
+const route = useRoute()
+const atTop = ref(true)
 const open = ref(false)
+
+const isHome = computed(() => route.path === '/')
+
+const hideHeader = computed(() => {
+	return isHome.value && atTop.value
+})
+
+const onScroll = () => {
+	atTop.value = window.scrollY === 0
+}
+
+onMounted(() => {
+	if (!isHome.value) return
+
+	window.addEventListener('scroll', onScroll, { passive: true })
+	onScroll()
+})
+
+onUnmounted(() => {
+	window.removeEventListener('scroll', onScroll)
+})
 </script>
 
 <template>
 	<div class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-		<header class="shrink-0 sticky top-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-sm border-b border-gray-200 dark:border-gray-700">
+		<header
+			v-show="!hideHeader"
+			class="shrink-0 sticky top-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-sm border-b border-gray-200 dark:border-gray-700 transition-all duration-300"
+		>
 			<div class="max-w-8xl mx-auto flex justify-between items-center px-6 py-4">
 				<NuxtLink
 					to="/"
@@ -42,7 +69,7 @@ const open = ref(false)
 			>
 				<MenuItem
 					:items="navigationMenu"
-					menu-class="flex justify-center items-center gap-4 px-6 py-4"
+					menu-class="flex flex-col justify-center items-center gap-4 px-6 py-4"
 					item-class="font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 text-center"
 				/>
 			</nav>

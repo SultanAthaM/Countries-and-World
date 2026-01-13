@@ -29,6 +29,9 @@ export default defineNuxtConfig(async () => {
 				titleTemplate: '%s | Countries & World'
 			}
 		},
+		css: [
+			'~/assets/css/main.css',
+		],
 		future: {
 			compatibilityVersion: 4
 		},
@@ -44,6 +47,9 @@ export default defineNuxtConfig(async () => {
 		},
 		routeRules: {
 			'/': {
+				prerender: true
+			},
+			'/country': {
 				prerender: true
 			},
 			...Object.fromEntries(

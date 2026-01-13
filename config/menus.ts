@@ -25,6 +25,11 @@ export const navigationMenu: MenuItem[] = [
 		key: 'nav-home',
 		label: 'Home',
 		to: '/'
+	},
+	{
+		key: 'nav-country',
+		label: 'Country',
+		to: '/country'
 	}
 ]
 

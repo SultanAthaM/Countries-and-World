@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*.home-hero-bg {*/
+/*    position: absolute;*/
+/*    inset: 0;*/
+/*    background-image: url('../svg/world_map.svg');*/
+/*    background-repeat: repeat-x;*/
+/*    background-size: auto 100%;*/
+/*    animation: hero-slide 180s linear infinite;*/
+/*    opacity: 0.12;*/
+/*}*/
+
+/*@keyframes hero-slide {*/
+/*    from {*/
+/*        background-position-x: 0;*/
+/*    }*/
+/*    to {*/
+/*        background-position-x: -200%;*/
+/*    }*/
+/*}*/
+
+/*@media (prefers-reduced-motion: reduce) {*/
+/*    .hero-bg {*/
+/*        animation: none;*/
+/*    }*/
+/*}*/

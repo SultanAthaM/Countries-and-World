@@ -33,7 +33,7 @@ defineProps<{
 				{{ item.label }}
 			</a>
 
-			<span v-else class="font-medium">
+			<span v-else :class="itemClass">
 	      {{ item.label }}
 	    </span>
 
