@@ -17,7 +17,7 @@ useSeoMeta({
 	<section aria-labelledby="hero-title" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 		<div class="home-hero-bg" aria-hidden="true"></div>
 
-		<div id="hero-title" class="max-w-3xl mx-6 z-10">
+		<div id="hero-title" class="max-w-3xl mx-6">
 			<h1 class="text-4xl text-center md:text-6xl font-bold tracking-tight mb-6">
 				{{ pageTitle }}
 			</h1>
