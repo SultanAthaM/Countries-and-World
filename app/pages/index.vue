@@ -84,7 +84,7 @@ const topPopulatedCountries = computed(() =>
 
 	<section class="relative flex items-center justify-center gap-8 px-6 md:px-24 lg:px-48">
 		<img
-			src="../assets/jpg/clay-banks-b5S4FrJb7yQ-unsplash.jpg"
+			src="../assets/webp/clay-banks-b5S4FrJb7yQ-unsplash.webp"
 			alt=""
 			aria-hidden="true"
 			loading="lazy"
