@@ -114,7 +114,7 @@ const topPopulatedCountries = computed(() =>
 
 				<button
 					type="submit"
-					class="px-6 py-3 rounded-md font-semibold bg-black text-white hover:bg-gray-800 transition-colors transition-transform hover:scale-105"
+					class="px-6 py-3 rounded-md font-semibold bg-black text-white hover:bg-gray-800 transition-transform hover:scale-105"
 				>
 					Search
 				</button>
