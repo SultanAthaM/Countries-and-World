@@ -15,10 +15,16 @@ const regions = [...new Set(
 )]
 
 const route = useRoute()
-const search = computed(() =>
-	typeof route.query.search === 'string'
-		? route.query.search.toLowerCase()
-		: ''
+const search = ref('')
+
+watch(
+	() => route.query.search,
+	(value) => {
+		search.value = typeof value === 'string'
+			? value
+			: ''
+	},
+	{ immediate: true }
 )
 
 const selectedRegion = ref('')
