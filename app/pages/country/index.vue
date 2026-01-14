@@ -114,7 +114,7 @@ const filteredCountries = computed(() => {
     </div>
 
     <div v-if="pending">Loading countries...</div>
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
       <NuxtLink
         v-for="country in filteredCountries"
         :key="country.cca3"

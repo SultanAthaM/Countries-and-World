@@ -63,10 +63,6 @@ export default defineNuxtConfig(async () => {
 			),
 			'/country/**': {
 				isr: interval
-			},
-			'/random': {
-				cache: false,
-				rerender: false
 			}
 		}
 	}
