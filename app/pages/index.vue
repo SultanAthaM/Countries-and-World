@@ -67,7 +67,7 @@ const topPopulatedCountries = computed(() =>
 				{{ pageTitle }}
 			</h1>
 
-			<p class="text-lg text-center md:text-xl text-gray-400 mb-8">
+			<p class="text-lg text-center md:text-xl dark:text-gray-300 mb-8">
 				{{ pageDescription }}
 			</p>
 
@@ -96,7 +96,7 @@ const topPopulatedCountries = computed(() =>
 				Explore Now
 			</h2>
 
-			<p class="text-lg text-center md:text-xl text-gray-400 mb-8">
+			<p class="text-lg text-center md:text-xl dark:text-gray-300 mb-8">
 				Search the country that you want to learn more of
 			</p>
 
@@ -129,19 +129,19 @@ const topPopulatedCountries = computed(() =>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mx-2">
 			<div>
-				<p class="text-3xl text-gray-400">Countries</p>
+				<p class="text-3xl dark:text-gray-300">Countries</p>
 				<p class="text-5xl font-bold">{{ totalCountries }}</p>
 			</div>
 
 			<div>
-				<p class="text-3xl text-gray-400">World Population</p>
+				<p class="text-3xl dark:text-gray-300">World Population</p>
 				<p class="text-5xl font-bold">
 					{{ totalPopulation.toLocaleString() }}
 				</p>
 			</div>
 
 			<div>
-				<p class="text-2xl text-gray-400 mb-3">
+				<p class="text-2xl dark:text-gray-300 mb-3">
 					Countries By Regions
 				</p>
 
@@ -154,7 +154,7 @@ const topPopulatedCountries = computed(() =>
 						<span class="font-medium">
 							{{ region }}
 						</span>
-						<span class="text-gray-400">
+						<span class="dark:text-gray-300">
 							{{ count }}
 						</span>
 					</li>
@@ -162,7 +162,7 @@ const topPopulatedCountries = computed(() =>
 			</div>
 
 			<div>
-				<p class="text-2xl text-gray-400 mb-2">
+				<p class="text-2xl dark:text-gray-300 mb-2">
 					Population Extremes
 				</p>
 
@@ -175,7 +175,7 @@ const topPopulatedCountries = computed(() =>
 						<span class="font-medium">
 							{{ index + 1 }}. {{ country.name.common }}
 						</span>
-						<span class="text-gray-400">
+						<span class="dark:text-gray-300">
 							{{ country.population.toLocaleString() }}
 						</span>
 					</li>
