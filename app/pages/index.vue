@@ -88,6 +88,7 @@ const topPopulatedCountries = computed(() =>
 			alt=""
 			aria-hidden="true"
 			loading="lazy"
+			fetchpriority="low"
 			class="hidden md:block max-h-[50vh] w-auto rounded-2xl opacity-90 shadow-xl"
 		/>
 
