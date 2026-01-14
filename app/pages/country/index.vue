@@ -14,10 +14,16 @@ const regions = [...new Set(
 		.filter(Boolean)
 )]
 
-const search = useState('search', () => '')
-const selectedRegion = useState('region', () => '')
-const selectedSort = useState('sort', () => '')
-const selectedOrder = useState('order', () => 'desc')
+const route = useRoute()
+const search = computed(() =>
+	typeof route.query.search === 'string'
+		? route.query.search.toLowerCase()
+		: ''
+)
+
+const selectedRegion = ref('')
+const selectedSort = ref<'name' | 'population' | ''>('')
+const selectedOrder = ref<'asc' | 'desc'>('desc')
 
 const filteredCountries = computed(() => {
 	if (!countries.value) return []

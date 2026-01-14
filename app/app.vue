@@ -79,7 +79,7 @@ onUnmounted(() => {
 			<NuxtPage />
 		</main>
 
-		<footer class="shrink-0 border-t px-6 md:px-24 py-12 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+		<footer class="shrink-0 border-t px-6 md:px-24 py-12 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 mt-4">
 			<div class="grid grid-cols-1 px-2 md:px-12 md:grid-cols-4 gap-8">
 				<div class="md:col-span-1">
 					<h2 class="text-lg font-semibold">
