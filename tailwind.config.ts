@@ -5,6 +5,7 @@ export default <Config>{
 		'./components/**/*.{vue,js}',
 		'./pages/**/*.{vue,js}',
 	],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			keyframes: {

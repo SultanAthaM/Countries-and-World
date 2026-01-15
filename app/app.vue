@@ -7,9 +7,14 @@ import { navigationMenu, resourceMenu, legalMenu } from "~~/config/menus.ts";
 const route = useRoute()
 const atTop = ref(true)
 const open = ref(false)
+const colorMode = useColorMode()
 
+const isDark = computed(() => colorMode.value === 'dark')
 const isHome = computed(() => route.path === '/')
 
+const toggle = () => {
+	colorMode.preference = isDark.value ? 'light' : 'dark'
+}
 const hideHeader = computed(() => {
 	return isHome.value && atTop.value
 })
@@ -44,23 +49,35 @@ onUnmounted(() => {
 					Countries<span class="text-blue-600 dark:text-blue-400"> &</span> World
 				</NuxtLink>
 
-				<nav class="hidden md:block">
-					<MenuItem
-						:items="navigationMenu"
-						menu-class="flex items-center gap-8"
-						item-class="group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
-					/>
-				</nav>
+				<div class="flex flex-row items-center gap-4">
+					<nav class="hidden md:block">
+						<MenuItem
+							:items="navigationMenu"
+							menu-class="flex items-center gap-8"
+							item-class="group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+						/>
+					</nav>
 
-				<button
-					class="md:hidden inline-flex items-center justify-center rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-					@click="open = !open"
-					:aria-expanded="open"
-					aria-label="Toggle menu"
-				>
-					<span v-if="!open">☰</span>
-					<span v-else>✕</span>
-				</button>
+					<button
+						type="button"
+						@click="toggle"
+						class="inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-200 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:focus-visible:ring-gray-600"
+						aria-label="Toggle dark mode"
+					>
+				    <span v-if="isDark" aria-hidden="true">🌙</span>
+				    <span v-else aria-hidden="true">☀️</span>
+				  </button>
+
+					<button
+						class="md:hidden inline-flex items-center justify-center rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+						@click="open = !open"
+						:aria-expanded="open"
+						aria-label="Toggle menu"
+					>
+						<span v-if="!open">☰</span>
+						<span v-else>✕</span>
+					</button>
+				</div>
 			</div>
 
 			<nav

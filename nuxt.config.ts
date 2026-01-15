@@ -36,8 +36,14 @@ export default defineNuxtConfig(async () => {
 			compatibilityVersion: 4
 		},
 		compatibilityDate: '2024-04-03',
+		colorMode: {
+			classSuffix: '',
+			preference: 'system',
+			fallback: 'light',
+		},
 		modules: [
 			'@nuxtjs/tailwindcss',
+			'@nuxtjs/color-mode'
 		],
 		devtools: {
 			enabled: !isProd
@@ -67,4 +73,3 @@ export default defineNuxtConfig(async () => {
 		}
 	}
 })
-
