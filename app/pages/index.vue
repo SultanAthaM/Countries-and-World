@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {Country} from "~~/types/country";
+import WorldMap from "~~/components/WorldMap.vue";
 
 const pageTitle = 'Explore Countries of the World'
 const pageDescription = 'Reliable demographic, geographic, and cultural data structured for clarity and accuracy.'
@@ -60,9 +61,11 @@ const topPopulatedCountries = computed(() =>
 
 <template>
 	<section aria-labelledby="hero-title" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-		<div class="home-hero-bg" aria-hidden="true"></div>
+		<WorldMap
+			class="absolute inset-0 left-0 top-0 w-auto h-full animate-slide will-change-transform fill-gray-400 dark:fill-gray-800"
+		/>
 
-		<div class="max-w-3xl mx-6">
+		<div class="max-w-3xl mx-6 z-10">
 			<h1 id="hero-title" class="text-4xl text-center md:text-6xl font-bold tracking-tight mb-6">
 				{{ pageTitle }}
 			</h1>

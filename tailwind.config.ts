@@ -6,7 +6,21 @@ export default <Config>{
 		'./pages/**/*.{vue,js}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+			keyframes: {
+				slide: {
+					'0%': {
+						transform: 'translateX(0)'
+					},
+					'100%': {
+						transform: 'translateX(-25%)'
+					}
+				}
+			},
+			animation: {
+				slide: 'slide 90s linear infinite'
+			}
+		},
 	},
 	plugins: [],
 }
