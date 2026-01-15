@@ -59,9 +59,12 @@ const topPopulatedCountries = computed(() =>
 </script>
 
 <template>
-	<section aria-labelledby="hero-title" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-		<div class="home-hero-bg" aria-hidden="true"></div>
-
+	<section
+		class="min-h-screen flex items-center justify-center
+		bg-world-map bg-repeat-x bg-[length:auto_100%]
+		animate-hero-slide
+		motion-reduce:animate-none"
+	>
 		<div class="max-w-3xl mx-6">
 			<h1 id="hero-title" class="text-4xl text-center md:text-6xl font-bold tracking-tight mb-6">
 				{{ pageTitle }}
@@ -74,7 +77,11 @@ const topPopulatedCountries = computed(() =>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
 				<NuxtLink
 					to="/country"
-					class="text-center px-6 py-3 rounded-lg font-semibold bg-black hover:bg-gray-800 text-white transition-transform hover:scale-105"
+					class="text-center px-6 py-3
+					rounded-lg font-semibold
+					bg-black hover:bg-gray-800
+					text-white transition-transform
+					hover:scale-105"
 				>
 					Browse All Countries
 				</NuxtLink>
@@ -92,7 +99,15 @@ const topPopulatedCountries = computed(() =>
 			class="hidden md:block max-h-[50vh] w-auto rounded-2xl opacity-90 shadow-xl"
 		/>
 
-		<div class="min-h-[50vh] w-full max-w-2xl flex flex-col gap-12 items-center justify-center rounded-2xl border-8 border-gray-700/60 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm shadow-lg px-8 py-10">
+		<div
+			class="min-h-[50vh] w-full
+			max-w-2xl flex flex-col
+			gap-12 items-center justify-center
+			rounded-2xl border-8
+			border-gray-700/60 bg-white/80
+			dark:bg-gray-900/70 backdrop-blur-sm
+			shadow-lg px-8 py-10"
+		>
 			<h2 class="text-4xl md:text-6xl font-bold tracking-tight text-center">
 				Explore Now
 			</h2>
@@ -110,12 +125,19 @@ const topPopulatedCountries = computed(() =>
 					type="search"
 					placeholder="Search for a country..."
 					aria-label="Search for a country"
-					class="flex-1 p-3 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black/60"
+					class="flex-1 p-3 rounded-md
+					bg-gray-100 dark:bg-gray-800
+					border border-gray-300
+					dark:border-gray-700 focus:outline-none
+					focus:ring-2 focus:ring-black/60"
 				/>
 
 				<button
 					type="submit"
-					class="px-6 py-3 rounded-md font-semibold bg-black text-white hover:bg-gray-800 transition-transform hover:scale-105"
+					class="px-6 py-3 rounded-md
+					font-semibold bg-black
+					text-white hover:bg-gray-800
+					transition-transform hover:scale-105"
 				>
 					Search
 				</button>

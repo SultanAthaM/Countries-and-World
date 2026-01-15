@@ -5,10 +5,9 @@ import MenuItem from "~~/components/MenuItem.vue";
 import { navigationMenu, resourceMenu, legalMenu } from "~~/config/menus.ts";
 
 const route = useRoute()
+const isHome = computed(() => route.path === '/')
 const atTop = ref(true)
 const open = ref(false)
-
-const isHome = computed(() => route.path === '/')
 
 const hideHeader = computed(() => {
 	return isHome.value && atTop.value
