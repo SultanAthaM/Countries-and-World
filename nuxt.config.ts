@@ -3,21 +3,21 @@ import type { Country } from './types/country'
 const isProd = process.env.NODE_ENV === 'production'
 const interval = 60 * 60 * 24 // 24 hours
 
-async function getTop12CountryRoutes() {
+async function getTopCountryRoutes() {
 	const fields = 'cca3,population'
 	const res = await fetch(`https://restcountries.com/v3.1/all?fields=${fields}`)
 	const countries: Country[] = await res.json()
 	
 	return countries
 		.sort((a, b) => b.population - a.population)
-		.slice(0, 12)
+		.slice(0, 15)
 		.map(c => `/country/${c.cca3}`)
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // @ts-ignore
 export default defineNuxtConfig(async () => {
-	const topCountryRoutes = await getTop12CountryRoutes()
+	const topCountryRoutes = await getTopCountryRoutes()
 	
 	return {
 		app: {
