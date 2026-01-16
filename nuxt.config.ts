@@ -30,7 +30,7 @@ export default defineNuxtConfig(async () => {
 			}
 		},
 		css: [
-			'~/assets/css/main.css',
+			'/assets/css/main.css',
 		],
 		future: {
 			compatibilityVersion: 4
@@ -43,13 +43,17 @@ export default defineNuxtConfig(async () => {
 		},
 		modules: [
 			'@nuxtjs/tailwindcss',
-			'@nuxtjs/color-mode'
+			'@nuxtjs/color-mode',
+			'@nuxtjs/sitemap'
 		],
 		devtools: {
 			enabled: !isProd
 		},
 		nitro: {
 			preset: isProd ? 'vercel' : 'bun'
+		},
+		site: {
+			url: 'https://countries-and-world.vercel.app/'
 		},
 		routeRules: {
 			'/': {
@@ -65,7 +69,7 @@ export default defineNuxtConfig(async () => {
 						prerender: true,
 						revalidate: interval
 					}
-				])
+					])
 			),
 			'/country/**': {
 				isr: interval

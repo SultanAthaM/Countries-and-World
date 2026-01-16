@@ -1,2 +1,3 @@
-User-Agent: *
-Disallow:
+User-agent: *
+Allow: /
+Sitemap: https://countries-and-world.vercel.app/sitemap.xml
