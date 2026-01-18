@@ -62,11 +62,11 @@ const topPopulatedCountries = computed(() =>
 <template>
 	<section aria-labelledby="hero-title" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 		<WorldMap
-			class="absolute inset-0 left-0 top-0 w-auto h-full animate-slide will-change-transform fill-gray-200 dark:fill-gray-950"
+			class="absolute inset-0 left-0 top-0 w-auto h-full animate-slide fill-gray-200 dark:fill-gray-950"
 		/>
 
 		<div class="max-w-3xl mx-6 z-10">
-			<h1 id="hero-title" class="text-4xl text-center md:text-6xl font-bold tracking-tight mb-6">
+			<h1 id="hero-title" class="text-4xl text-center md:text-6xl font-bold tracking-tight mb-6 border-b-6 border-gray-700 pb-3">
 				{{ pageTitle }}
 			</h1>
 
@@ -86,8 +86,8 @@ const topPopulatedCountries = computed(() =>
 	</section>
 
 	<section class="relative flex items-center justify-center gap-8 px-6 md:px-24 lg:px-48">
-		<img
-			src="../assets/webp/clay-banks-b5S4FrJb7yQ-unsplash.webp"
+		<NuxtImg
+			src="/webp/clay-banks-b5S4FrJb7yQ-unsplash.webp"
 			alt=""
 			aria-hidden="true"
 			loading="lazy"
@@ -95,51 +95,62 @@ const topPopulatedCountries = computed(() =>
 			class="hidden md:block max-h-[50vh] w-auto rounded-2xl opacity-90 shadow-xl"
 		/>
 
-		<div class="min-h-[50vh] w-full max-w-2xl flex flex-col gap-12 items-center justify-center rounded-2xl border-8 border-gray-700/60 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm shadow-lg px-8 py-10">
-			<h2 class="text-4xl md:text-6xl font-bold tracking-tight text-center">
-				Explore Now
-			</h2>
+		<div class="relative min-h-[50vh] w-full max-w-2xl flex flex-col gap-12 items-center justify-center rounded-2xl border-8 border-gray-700/60 shadow-lg px-8 py-10 overflow-hidden">
+			<NuxtImg
+				src="/webp/clay-banks-b5S4FrJb7yQ-unsplash.webp"
+				alt=""
+				aria-hidden="true"
+				loading="lazy"
+				fetchpriority="low"
+				class="absolute block md:hidden w-full h-auto opacity-60 dark:opacity-90"
+			/>
 
-			<p class="text-lg text-center md:text-xl dark:text-gray-300 mb-8">
-				Search the country that you want to learn more of
-			</p>
+			<div class="absolute flex flex-col w-full h-full gap-6 z-10 items-center justify-center backdrop-blur-md p-10">
+				<h2 class="text-5xl md:text-6xl font-bold tracking-tight text-center border-b-4 border-gray-700 pb-3 px-1">
+					Explore Now
+				</h2>
 
-			<form
-				@submit.prevent="onSearch"
-				class="flex flex-col sm:flex-row gap-3 w-full max-w-md"
-			>
-				<input
-					v-model="search"
-					type="search"
-					placeholder="Search for a country..."
-					aria-label="Search for a country"
-					class="flex-1 p-3 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black/60"
-				/>
+				<p class="text-2xl text-center font-medium md:text-xl dark:text-gray-300 mb-8">
+					Search the country that you want to learn more of
+				</p>
 
-				<button
-					type="submit"
-					class="px-6 py-3 rounded-md font-semibold bg-black text-white hover:bg-gray-800 transition-transform hover:scale-105"
+				<form
+					@submit.prevent="onSearch"
+					class="flex flex-col sm:flex-row gap-3 w-full max-w-md"
 				>
-					Search
-				</button>
-			</form>
+					<input
+						v-model="search"
+						type="search"
+						placeholder="Search for a country..."
+						aria-label="Search for a country"
+						class="flex-1 p-3 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black/60"
+					/>
+
+					<button
+						type="submit"
+						class="px-6 py-3 rounded-md font-semibold bg-black text-white hover:bg-gray-800 transition-transform hover:scale-105"
+					>
+						Search
+					</button>
+				</form>
+			</div>
 		</div>
 	</section>
 
-	<section class="px-6 py-16 max-w-7xl mx-auto mt-4">
-		<h2 class="text-4xl md:text-6xl font-bold mb-12 text-center">
+	<section class="flex flex-col items-center justify-center px-6 py-8 mt-4">
+		<h2 class="text-4xl md:text-6xl font-bold border-b-4 border-gray-700 pb-3 mb-12 mx-8 text-center">
 			World at a Glance
 		</h2>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mx-2">
 			<div>
-				<p class="text-3xl dark:text-gray-300">Countries</p>
-				<p class="text-5xl font-bold">{{ totalCountries }}</p>
+				<p class="text-3xl md:text-4xl dark:text-gray-300">Countries</p>
+				<p class="text-5xl md:text-6xl font-bold">{{ totalCountries }}</p>
 			</div>
 
 			<div>
-				<p class="text-3xl dark:text-gray-300">World Population</p>
-				<p class="text-5xl font-bold">
+				<p class="text-3xl md:text-4xl dark:text-gray-300">World Population</p>
+				<p class="text-5xl md:text-6xl font-bold">
 					{{ totalPopulation.toLocaleString() }}
 				</p>
 			</div>

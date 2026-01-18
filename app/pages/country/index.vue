@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { Country } from '~~/types/country'
 
+const pageTitle = 'Countries'
+
 useSeoMeta({
-	title: 'Countries',
+	title: pageTitle,
 	description: 'Browse countries by region, population, and name. Explore detailed country data in one place.'
 })
 
@@ -71,7 +73,7 @@ const filteredCountries = computed(() => {
 <template>
   <main class="p-6 max-w-8xl mx-auto">
 	  <h1 class="text-5xl text-center md:text-left font-bold mb-8">
-		  Countries
+		  {{ pageTitle }}
 	  </h1>
 
     <div class="flex flex-col md:flex-row gap-4 mb-10 justify-between">
@@ -113,15 +115,14 @@ const filteredCountries = computed(() => {
 	    </div>
     </div>
 
-    <div v-if="pending">Loading countries...</div>
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
       <NuxtLink
         v-for="country in filteredCountries"
         :key="country.cca3"
         :to="`/country/${country.cca3}`"
-        class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105"
+        class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-transform hover:scale-105"
       >
-        <img
+        <NuxtImg
 	        :src="country.flags.svg"
 	        :alt="country.flags.alt"
 	        loading="lazy"

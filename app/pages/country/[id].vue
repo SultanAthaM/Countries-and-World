@@ -19,7 +19,7 @@ if (country) {
 <template>
   <div
 	  v-if="country"
-	  class="p-8 max-w-7xl mx-auto"
+	  class="p-8 min-h-[50vh] max-w-7xl mx-auto"
   >
     <button
 	    @click="$router.back()"
@@ -29,7 +29,7 @@ if (country) {
     </button>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <img
+      <NuxtImg
 	      :src="country.flags.svg"
 	      :alt="country.flags.alt"
 	      fetchpriority="high"

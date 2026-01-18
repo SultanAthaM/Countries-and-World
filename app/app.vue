@@ -11,6 +11,7 @@ const colorMode = useColorMode()
 
 const isDark = computed(() => colorMode.value === 'dark')
 const isHome = computed(() => route.path === '/')
+const isMain = computed(() => route.path === '/country')
 
 const toggle = () => {
 	colorMode.preference = isDark.value ? 'light' : 'dark'
@@ -96,16 +97,41 @@ onUnmounted(() => {
 			<NuxtPage />
 		</main>
 
-		<footer class="shrink-0 border-t px-6 md:px-24 py-12 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 mt-4">
-			<div class="grid grid-cols-1 px-2 md:px-12 md:grid-cols-4 gap-8">
-				<div class="md:col-span-1">
-					<h2 class="text-lg font-semibold">
+		<footer class="shrink-0 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 mt-4 transition-all duration-300">
+			<div
+				v-show="!isMain"
+				class="relative min-h-[40vh] flex items-center justify-center overflow-hidden"
+			>
+				<NuxtImg
+					src="/jpg/nasa-Q1p7bh3SHj8-unsplash.jpg"
+					alt=""
+					aria-hidden="true"
+					loading="lazy"
+					fetchpriority="low"
+					class="absolute inset-0 left-0 top-0 w-full h-full object-cover opacity-80"
+				/>
+
+				<div class="max-w-2xl mx-6 z-10 bg-gray-100 bg-opacity-50 dark:bg-transparent dark:backdrop-blur-sm rounded-2xl px-8 py-6 text-center">
+					<h2 class="text-4xl font-bold tracking-tight mb-3">
 						Countries<span class="text-blue-600"> &</span> World
 					</h2>
 
-					<p class="mt-3 text-sm text-gray-600 dark:text-gray-500">
+					<p class="mt-3 text-xl text-gray-800 dark:text-gray-300 mb-8">
 						Exploring countries and global data, clearly and responsibly.
 					</p>
+
+					<NuxtLink
+						to="/country"
+						class="text-center px-6 py-3 rounded-lg font-semibold bg-black hover:bg-gray-800 text-white transition-transform hover:scale-105"
+					>
+						Browse All Countries
+					</NuxtLink>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 px-6 pt-12 md:px-12 md:grid-cols-4 gap-8">
+				<div class="md:col-span-1">
+
 				</div>
 
 				<div>
@@ -141,7 +167,7 @@ onUnmounted(() => {
 				</div>
 			</div>
 
-			<div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-col items-center justify-between text-sm text-gray-500">
+			<div class="mt-12 py-6 mx-12 border-t border-gray-200 dark:border-gray-700 flex flex-col items-center justify-between text-sm text-gray-500">
 				<span>© {{ new Date().getFullYear() }} Countries & World</span>
 				<p>
 					Data provided by

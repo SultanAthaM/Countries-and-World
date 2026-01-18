@@ -4,14 +4,14 @@ const isProd = process.env.NODE_ENV === 'production'
 const interval = 60 * 60 * 24 // 24 hours
 
 async function getTopCountryRoutes() {
-	const fields = 'cca3,population'
-	const res = await fetch(`https://restcountries.com/v3.1/all?fields=${fields}`)
-	const countries: Country[] = await res.json()
-	
-	return countries
-		.sort((a, b) => b.population - a.population)
-		.slice(0, 15)
-		.map(c => `/country/${c.cca3}`)
+								const fields = 'cca3,population'
+								const res = await fetch(`https://restcountries.com/v3.1/all?fields=${fields}`)
+								const countries: Country[] = await res.json()
+								
+								return countries
+																.sort((a, b) => b.population - a.population)
+																.slice(0, 15)
+																.map(c => `/country/${c.cca3}`)
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -28,9 +28,9 @@ export default defineNuxtConfig(async () => {
 				title: 'Countries & World',
 				titleTemplate: '%s | Countries & World'
 			}
-		},
+			},
 		css: [
-			'/assets/css/main.css',
+			'/css/main.css',
 		],
 		future: {
 			compatibilityVersion: 4
@@ -44,7 +44,8 @@ export default defineNuxtConfig(async () => {
 		modules: [
 			'@nuxtjs/tailwindcss',
 			'@nuxtjs/color-mode',
-			'@nuxtjs/sitemap'
+			'@nuxtjs/sitemap',
+			'@nuxt/image'
 		],
 		devtools: {
 			enabled: !isProd
