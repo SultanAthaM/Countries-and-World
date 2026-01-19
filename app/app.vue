@@ -104,7 +104,7 @@ onUnmounted(() => {
 			>
 				<NuxtImg
 					src="/jpg/nasa-Q1p7bh3SHj8-unsplash.jpg"
-					alt=""
+					placeholder
 					aria-hidden="true"
 					loading="lazy"
 					fetchpriority="low"

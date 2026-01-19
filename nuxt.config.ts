@@ -36,25 +36,32 @@ export default defineNuxtConfig(async () => {
 			compatibilityVersion: 4
 		},
 		compatibilityDate: '2024-04-03',
-		colorMode: {
-			classSuffix: '',
-			preference: 'system',
-			fallback: 'light',
-		},
 		modules: [
 			'@nuxtjs/tailwindcss',
 			'@nuxtjs/color-mode',
 			'@nuxtjs/sitemap',
 			'@nuxt/image'
 		],
+		colorMode: {
+			classSuffix: '',
+			preference: 'system',
+			fallback: 'light',
+		},
+		site: {
+			url: 'https://countries-and-world.vercel.app/'
+		},
+		image: {
+			format: [
+				'avif',
+				'webp'
+			],
+			provider: 'vercel'
+		},
 		devtools: {
 			enabled: !isProd
 		},
 		nitro: {
 			preset: isProd ? 'vercel' : 'bun'
-		},
-		site: {
-			url: 'https://countries-and-world.vercel.app/'
 		},
 		routeRules: {
 			'/': {

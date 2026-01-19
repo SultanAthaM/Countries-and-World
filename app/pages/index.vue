@@ -97,8 +97,8 @@ const topPopulatedCountries = computed(() =>
 
 		<div class="relative min-h-[50vh] w-full max-w-2xl flex flex-col gap-12 items-center justify-center rounded-2xl border-8 border-gray-700/60 shadow-lg px-8 py-10 overflow-hidden">
 			<NuxtImg
-				src="/webp/clay-banks-b5S4FrJb7yQ-unsplash.webp"
-				alt=""
+				src="/jpg/clay-banks-b5S4FrJb7yQ-unsplash.jpg"
+				placeholder
 				aria-hidden="true"
 				loading="lazy"
 				fetchpriority="low"

@@ -9,7 +9,7 @@ useSeoMeta({
 })
 
 const fields = 'name,cca3,flags,population,region,capital'
-const { data: countries, pending } = await useFetch<Country[]>(`https://restcountries.com/v3.1/all?fields=${fields}`)
+const { data: countries } = await useFetch<Country[]>(`https://restcountries.com/v3.1/all?fields=${fields}`)
 const regions = [...new Set(
 	(countries.value ?? [])
 		.map(c => c.region)
