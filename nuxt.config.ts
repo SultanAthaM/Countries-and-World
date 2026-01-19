@@ -65,22 +65,26 @@ export default defineNuxtConfig(async () => {
 		},
 		routeRules: {
 			'/': {
-				prerender: true
+				prerender: true,
+				noscript: true
 			},
 			'/country': {
-				prerender: true
+				prerender: true,
+				noscript: true
 			},
 			...Object.fromEntries(
 				topCountryRoutes.map(route => [
 					route,
 					{
 						prerender: true,
-						revalidate: interval
+						revalidate: interval,
+						noscript: true
 					}
 					])
 			),
 			'/country/**': {
-				isr: interval
+				isr: interval,
+				noscript: true
 			}
 		}
 	}
