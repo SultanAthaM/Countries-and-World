@@ -10,8 +10,7 @@ useSeoMeta({
 	description: pageDescription,
 	ogTitle: pageTitle,
 	ogDescription: pageDescription,
-	ogType: 'website',
-	twitterCard: 'summary_large_image'
+	ogType: 'website'
 })
 
 const search = ref('')
@@ -29,6 +28,7 @@ const onSearch = () => {
 
 const fields = 'name,cca3,flags,population,region'
 const { data: countries } = await useFetch<Country[]>(`https://restcountries.com/v3.1/all?fields=${fields}`)
+
 const totalCountries = computed(() =>
 	countries.value?.length ?? 0
 )

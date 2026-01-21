@@ -45,11 +45,11 @@ export const legalMenu: MenuItem[] = [
 	{
 		key: 'legal-privacy',
 		label: 'Privacy',
-		to: '#'
+		to: '/privacy'
 	},
 	{
 		key: 'legal-term',
 		label: 'Terms',
-		to: '#'
+		to: '/term'
 	}
 ]

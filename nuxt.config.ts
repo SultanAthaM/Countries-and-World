@@ -4,14 +4,14 @@ const isProd = process.env.NODE_ENV === 'production'
 const interval = 60 * 60 * 24 // 24 hours
 
 async function getTopCountryRoutes() {
-								const fields = 'cca3,population'
-								const res = await fetch(`https://restcountries.com/v3.1/all?fields=${fields}`)
-								const countries: Country[] = await res.json()
-								
-								return countries
-																.sort((a, b) => b.population - a.population)
-																.slice(0, 15)
-																.map(c => `/country/${c.cca3}`)
+	const fields = 'cca3,population'
+	const res = await fetch(`https://restcountries.com/v3.1/all?fields=${fields}`)
+	const countries: Country[] = await res.json()
+	
+	return countries
+		.sort((a, b) => b.population - a.population)
+		.slice(0, 15)
+		.map(c => `/country/${c.cca3}`)
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -40,7 +40,8 @@ export default defineNuxtConfig(async () => {
 			'@nuxtjs/tailwindcss',
 			'@nuxtjs/color-mode',
 			'@nuxtjs/sitemap',
-			'@nuxt/image'
+			'@nuxt/image',
+			'@nuxt/content'
 		],
 		colorMode: {
 			classSuffix: '',
@@ -57,6 +58,20 @@ export default defineNuxtConfig(async () => {
 			],
 			provider: 'vercel'
 		},
+		content: {
+			database: {
+				type: 'sqlite',
+				filename: ':memory:'
+			},
+			build: {
+				markdown: {
+					toc: {
+						depth: 3,
+						searchDepth: 3
+					}
+				}
+			}
+		},
 		devtools: {
 			enabled: !isProd
 		},
@@ -64,7 +79,7 @@ export default defineNuxtConfig(async () => {
 			preset: isProd ? 'vercel' : 'bun'
 		},
 		routeRules: {
-			'/': {
+			'/*': {
 				prerender: true
 			},
 			'/country': {
@@ -79,7 +94,7 @@ export default defineNuxtConfig(async () => {
 					}
 					])
 			),
-			'/country/**': {
+			'/country/*': {
 				isr: interval
 			}
 		}
