@@ -1,8 +1,12 @@
 <script setup>
 const route = useRoute()
 
-const { data } = await useAsyncData(() =>
-	queryCollection('content').path(route.path).first()
+const { data } = await useAsyncData(
+	() => `content:${route.path}`,
+	() => queryCollection('content').path(route.path).first(),
+	{
+		watch: [() => route.path]
+	}
 )
 
 if (!data.value) {
