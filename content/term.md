@@ -5,7 +5,7 @@ description: By accessing or using Countries & World, you agree to be bound by t
 
 # Terms of Service
 
-_Last updated: 1 January 2026_
+_Last updated: 21 January 2026_
 
 ## 1. Acceptance of Terms
 

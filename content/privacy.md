@@ -5,7 +5,7 @@ description: This Privacy Policy explains how we collect, use, and safeguard you
 
 # Privacy Policy
 
-_Last updated: 1 January 2026_
+_Last updated: 21 January 2026_
 
 ## 1. Introduction
 

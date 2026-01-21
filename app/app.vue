@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import MenuItem from "~~/components/MenuItem.vue";
-import { navigationMenu, resourceMenu, legalMenu } from "~~/config/menus.ts";
+import {navigationMenu, resourceMenu, legalMenu, contactMenu} from "~~/config/menus.ts";
 
 const route = useRoute()
 const atTop = ref(true)
@@ -54,8 +54,7 @@ onUnmounted(() => {
 					<nav class="hidden md:block">
 						<MenuItem
 							:items="navigationMenu"
-							menu-class="flex items-center gap-8"
-							item-class="group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+							class="flex items-center gap-8 group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
 						/>
 					</nav>
 
@@ -87,8 +86,7 @@ onUnmounted(() => {
 			>
 				<MenuItem
 					:items="navigationMenu"
-					menu-class="flex flex-col justify-center items-center gap-4 px-6 py-4"
-					item-class="font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 text-center"
+					class="flex flex-col justify-center items-center gap-4 px-6 py-4 font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 text-center"
 				/>
 			</nav>
 		</header>
@@ -131,7 +129,12 @@ onUnmounted(() => {
 
 			<div class="grid grid-cols-1 px-6 pt-12 md:px-12 md:grid-cols-4 gap-8">
 				<div class="md:col-span-1">
+					<h3 class="font-medium mb-3">Contact Person</h3>
 
+					<MenuItem
+						:items="contactMenu"
+						class="space-y-2 text-sm"
+					/>
 				</div>
 
 				<div>
@@ -140,8 +143,7 @@ onUnmounted(() => {
 					<nav aria-label="Footer navigation">
 						<MenuItem
 							:items="navigationMenu"
-							menu-class="space-y-2 text-sm"
-							item-class="hover:text-blue-600"
+							class="space-y-2 text-sm"
 						/>
 					</nav>
 				</div>
@@ -151,19 +153,19 @@ onUnmounted(() => {
 
 					<MenuItem
 						:items="resourceMenu"
-						menu-class="space-y-2 text-sm"
-						item-class="hover:text-blue-600"
+						class="space-y-2 text-sm"
 					/>
 				</div>
 
 				<div>
 					<h3 class="font-medium mb-3">Legal</h3>
 
-					<MenuItem
-						:items="legalMenu"
-						menu-class="space-y-2 text-sm"
-						item-class="hover:text-blue-600"
-					/>
+					<nav aria-label="Footer navigation">
+						<MenuItem
+							:items="legalMenu"
+							class="space-y-2 text-sm"
+						/>
+					</nav>
 				</div>
 			</div>
 

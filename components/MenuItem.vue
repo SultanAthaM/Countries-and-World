@@ -3,14 +3,11 @@ import type { MenuItem } from "../config/menus"
 
 defineProps<{
 	items: MenuItem[]
-	menuClass?: string | string[]
-	itemClass?: string
-	childrenClass?: string
 }>()
 </script>
 
 <template>
-	<ul :class="menuClass">
+	<ul>
 		<li
 			v-for="item in items"
 			:key="item.key"
@@ -18,7 +15,6 @@ defineProps<{
 			<NuxtLink
 				v-if="'to' in item"
 				:to="item.to"
-				:class="itemClass"
 			>
 				{{ item.label }}
 			</NuxtLink>
@@ -28,22 +24,14 @@ defineProps<{
 				:href="item.href"
 				:target="item.target"
 				:rel="item.rel"
-				:class="['underline', itemClass]"
+				class="underline"
 			>
 				{{ item.label }}
 			</a>
 
-			<span v-else :class="itemClass">
+			<span v-else>
 	      {{ item.label }}
 	    </span>
-
-			<MenuItem
-				v-if="item.children?.length"
-				:items="item.children"
-				:menu-class="menuClass"
-				:item-class="childrenClass"
-				:children-class="childrenClass"
-			/>
 		</li>
 	</ul>
 </template>

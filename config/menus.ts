@@ -16,9 +16,20 @@ export type MenuItem =
 	| {
 	key: string
 	label: string
-	children: MenuItem[]
+	children?: MenuItem[]
 }
 
+export const contactMenu: MenuItem[] = [
+	{
+		key: 'contact-email',
+		label: 'Sultan Atha Maulana',
+	},
+	{
+		key: 'contact-email-gmail',
+		label: 'Gmail: natureson111111@gmail.com',
+		href: 'mailto:natureson111111@gmail.com'
+	}
+]
 
 export const navigationMenu: MenuItem[] = [
 	{
