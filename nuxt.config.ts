@@ -79,7 +79,7 @@ export default defineNuxtConfig(async () => {
 			preset: isProd ? 'vercel' : 'bun'
 		},
 		routeRules: {
-			'/*': {
+			'/': {
 				prerender: true
 			},
 			'/country': {
