@@ -66,7 +66,7 @@ const topPopulatedCountries = computed(() =>
 		/>
 
 		<div class="max-w-3xl mx-6 z-10">
-			<h1 id="hero-title" class="text-4xl text-center md:text-6xl font-bold tracking-tight mb-6 border-b-6 border-gray-700 pb-3">
+			<h1 id="hero-title" class="section-title mb-6 pb-3">
 				{{ pageTitle }}
 			</h1>
 
@@ -77,7 +77,7 @@ const topPopulatedCountries = computed(() =>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
 				<NuxtLink
 					to="/country"
-					class="text-center px-6 py-3 rounded-lg font-semibold bg-black hover:bg-gray-800 text-white transition-transform hover:scale-105"
+					class="btn-primary"
 				>
 					Browse All Countries
 				</NuxtLink>
@@ -106,7 +106,7 @@ const topPopulatedCountries = computed(() =>
 			/>
 
 			<div class="absolute flex flex-col w-full h-full gap-6 z-10 items-center justify-center backdrop-blur-md p-10">
-				<h2 class="text-5xl md:text-6xl font-bold tracking-tight text-center border-b-4 border-gray-700 pb-3 px-1">
+				<h2 class="section-title pb-3 px-1">
 					Explore Now
 				</h2>
 
@@ -123,12 +123,12 @@ const topPopulatedCountries = computed(() =>
 						type="search"
 						placeholder="Search for a country..."
 						aria-label="Search for a country"
-						class="flex-1 p-3 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black/60"
+						class="input-base flex-1"
 					/>
 
 					<button
 						type="submit"
-						class="px-6 py-3 rounded-md font-semibold bg-black text-white hover:bg-gray-800 transition-transform hover:scale-105"
+						class="btn-primary"
 					>
 						Search
 					</button>
@@ -138,7 +138,7 @@ const topPopulatedCountries = computed(() =>
 	</section>
 
 	<section class="flex flex-col items-center justify-center px-6 py-8 mt-4">
-		<h2 class="text-4xl md:text-6xl font-bold border-b-4 border-gray-700 pb-3 mb-12 mx-8 text-center">
+		<h2 class="section-title mb-12 mx-8">
 			World at a Glance
 		</h2>
 

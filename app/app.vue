@@ -54,7 +54,7 @@ onUnmounted(() => {
 					<nav class="hidden md:block">
 						<MenuItem
 							:items="navigationMenu"
-							class="flex items-center gap-8 group relative font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+							class="flex items-center gap-8 group relative font-medium text-gray-600 dark:text-gray-300 transition"
 						/>
 					</nav>
 
@@ -86,7 +86,7 @@ onUnmounted(() => {
 			>
 				<MenuItem
 					:items="navigationMenu"
-					class="flex flex-col justify-center items-center gap-4 px-6 py-4 font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 text-center"
+					class="flex flex-col justify-center items-center gap-4 px-6 py-4 font-medium text-gray-700 dark:text-gray-200 text-center"
 				/>
 			</nav>
 		</header>
@@ -120,7 +120,7 @@ onUnmounted(() => {
 
 					<NuxtLink
 						to="/country"
-						class="text-center px-6 py-3 rounded-lg font-semibold bg-black hover:bg-gray-800 text-white transition-transform hover:scale-105"
+						class="btn-primary"
 					>
 						Browse All Countries
 					</NuxtLink>

@@ -1,3 +1,130 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* -------------------------------------------------------
+   Global styling "theme"
+   - base: sensible defaults (typography, focus, selection)
+   - components: reusable primitives (buttons, inputs, layout)
+-------------------------------------------------------- */
+
+@layer base {
+	/* Keep global defaults minimal and predictable */
+	html {
+		@apply text-[16px] antialiased;
+	}
+
+	a:hover {
+		@apply text-blue-600;
+	}
+
+	body {
+		@apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+	}
+
+	/* Better default focus for keyboard users */
+	:focus-visible {
+		@apply outline-none ring-2 ring-gray-400 dark:ring-gray-600 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+	}
+
+	/* Optional: nicer text selection */
+	::selection {
+		@apply bg-blue-200 text-gray-900;
+	}
+
+	.dark ::selection {
+		@apply bg-blue-600 text-white;
+	}
+}
+
+@layer components {
+	/* ---------- App shell (used by root layout) ---------- */
+	.app-shell {
+		@apply min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+	}
+
+	.app-header {
+		@apply shrink-0 sticky top-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-sm border-b border-gray-200 dark:border-gray-700 transition-all duration-300;
+	}
+
+	.app-header-inner {
+		@apply max-w-8xl mx-auto flex justify-between items-center px-6 py-4;
+	}
+
+	.app-footer {
+		@apply shrink-0 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 mt-4 transition-all duration-300;
+	}
+
+	/* ---------- Layout primitives ---------- */
+	.page-container {
+		@apply mx-auto w-full px-6;
+	}
+
+	.page-container-7xl {
+		@apply page-container max-w-7xl;
+	}
+	/* ---------- Typography primitives ---------- */
+	.section-title {
+		@apply text-4xl md:text-6xl font-bold border-b-4 border-gray-700 pb-3 text-center;
+	}
+
+	.section-title-left {
+		@apply text-5xl font-bold mb-8 text-center md:text-left;
+	}
+
+	/* ---------- Buttons ---------- */
+	.btn-primary {
+		@apply text-center px-6 py-3 rounded-lg font-semibold bg-black text-white hover:bg-gray-800 transition-transform hover:scale-105;
+	}
+
+	.btn-secondary {
+		@apply px-6 py-2 bg-white dark:bg-gray-800 shadow-md rounded-md;
+	}
+
+	.icon-btn {
+		@apply inline-flex items-center justify-center rounded-lg transition;
+	}
+
+	.icon-btn-sm {
+		@apply icon-btn p-2;
+	}
+
+	.theme-toggle {
+		@apply inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-200 hover:bg-gray-300 dark:hover:bg-gray-700;
+	}
+
+	/* ---------- Form controls ---------- */
+	.input-base {
+		@apply p-3 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black/60;
+	}
+
+	.input-elevated {
+		@apply p-3 shadow-md rounded-md dark:bg-gray-800;
+	}
+
+	.select-elevated {
+		@apply p-3 shadow-md rounded-md dark:bg-gray-800;
+	}
+
+	/* ---------- Cards / pills ---------- */
+	.country-card {
+		@apply bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-transform hover:scale-105;
+	}
+
+	.country-card-img {
+		@apply w-full h-48 object-cover border-b dark:border-gray-700;
+	}
+
+	.pill-link {
+		@apply px-4 py-1 bg-white dark:bg-gray-800 shadow-sm border dark:border-gray-700 rounded text-sm;
+	}
+
+	/* ---------- Content page helpers ---------- */
+	.content-grid {
+		@apply grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_260px] gap-10 m-6;
+	}
+
+	.toc-link {
+		@apply block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white;
+	}
+}

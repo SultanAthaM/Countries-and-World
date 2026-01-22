@@ -15,6 +15,7 @@ defineProps<{
 			<NuxtLink
 				v-if="'to' in item"
 				:to="item.to"
+				class="hover:brightness-90"
 			>
 				{{ item.label }}
 			</NuxtLink>
@@ -24,7 +25,7 @@ defineProps<{
 				:href="item.href"
 				:target="item.target"
 				:rel="item.rel"
-				class="underline"
+				class="underline hover:brightness-90"
 			>
 				{{ item.label }}
 			</a>

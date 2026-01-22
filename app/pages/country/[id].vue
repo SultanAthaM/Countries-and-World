@@ -19,11 +19,11 @@ if (country) {
 <template>
   <div
 	  v-if="country"
-	  class="p-8 min-h-[50vh] max-w-7xl mx-auto"
+	  class="page-container-7xl p-8 min-h-[50vh]"
   >
     <button
 	    @click="$router.back()"
-	    class="mb-10 px-6 py-2 bg-white dark:bg-gray-800 shadow-md rounded-md"
+	    class="btn-secondary mb-10"
     >
       ← Back
     </button>
@@ -63,7 +63,7 @@ if (country) {
 	          v-for="border in country.borders"
 	          :key="border"
 	          :to="`/country/${border}`"
-	          class="px-4 py-1 bg-white dark:bg-gray-800 shadow-sm border dark:border-gray-700 rounded text-sm"
+	          class="pill-link"
           >
             {{ border }}
           </NuxtLink>

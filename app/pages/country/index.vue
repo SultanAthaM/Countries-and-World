@@ -71,7 +71,7 @@ const filteredCountries = computed(() => {
 </script>
 
 <template>
-  <main class="p-6 max-w-8xl mx-auto">
+  <main class="page-container p-6">
 	  <h1 class="text-5xl text-center md:text-left font-bold mb-8">
 		  {{ pageTitle }}
 	  </h1>
@@ -81,14 +81,14 @@ const filteredCountries = computed(() => {
 	      v-model="search"
 	      type="text"
 	      placeholder="Search for a country..."
-	      class="p-3 shadow-md rounded-md dark:bg-gray-800 w-full md:max-w-md"
+	      class="input-elevated w-full md:max-w-md"
       />
 
 	    <div class="flex flex-col md:flex-row gap-4 justify-between">
 		    <select
 			    v-model="selectedSort"
 			    aria-label="Sort"
-			    class="p-3 shadow-md rounded-md dark:bg-gray-800"
+			    class="select-elevated"
 		    >
 			    <option value="">Sort by</option>
 			    <option value="population">Sort by Population</option>
@@ -98,7 +98,7 @@ const filteredCountries = computed(() => {
 		    <select
 			    v-model="selectedOrder"
 			    aria-label="Sort order"
-			    class="p-3 shadow-md rounded-md dark:bg-gray-800"
+			    class="select-elevated"
 		    >
 			    <option value="desc">Descending</option>
 			    <option value="asc">Ascending</option>
@@ -107,7 +107,7 @@ const filteredCountries = computed(() => {
 	      <select
 		      v-model="selectedRegion"
 		      aria-label="Filter by region"
-		      class="p-3 shadow-md rounded-md dark:bg-gray-800"
+		      class="select-elevated"
 	      >
 	        <option value="">Filter by Region</option>
 	        <option v-for="region in regions" :value="region" :key="region">{{ region }}</option>
@@ -120,14 +120,14 @@ const filteredCountries = computed(() => {
         v-for="country in filteredCountries"
         :key="country.cca3"
         :to="`/country/${country.cca3}`"
-        class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-transform hover:scale-105"
+        class="country-card"
       >
         <NuxtImg
 	        :src="country.flags.svg"
 	        :alt="country.flags.alt"
 	        loading="lazy"
 	        fetchpriority="low"
-	        class="w-full h-48 object-cover border-b dark:border-gray-700"
+	        class="country-card-img"
         />
 
         <div class="p-6">
