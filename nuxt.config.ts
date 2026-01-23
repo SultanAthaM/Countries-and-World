@@ -51,6 +51,13 @@ export default defineNuxtConfig(async () => {
 		site: {
 			url: 'https://countries-and-world.vercel.app/'
 		},
+		sitemap: {
+			urls: [
+				'/about',
+				'/privacy',
+				'/terms',
+			],
+		},
 		image: {
 			format: [
 				'avif',

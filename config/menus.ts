@@ -41,6 +41,11 @@ export const navigationMenu: MenuItem[] = [
 		key: 'nav-country',
 		label: 'Country',
 		to: '/country'
+	},
+	{
+		key: 'nav-about',
+		label: 'About',
+		to: '/about'
 	}
 ]
 
