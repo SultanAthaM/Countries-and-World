@@ -1,3 +1,8 @@
+---
+title: About
+description: Countries & World is a global reference web application designed to provide users with structured, reliable, and easy-to-navigate data about countries across the world.
+---
+
 # About Countries & World
 
 ## 🌍 Overview
