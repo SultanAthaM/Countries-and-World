@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Country } from '~~/types/country'
+import countriesJson from '~~/public/countriesV4.json'
 
 const pageTitle = 'Countries'
 
@@ -8,8 +9,7 @@ useSeoMeta({
 	description: 'Browse countries by region, population, and name. Explore detailed country data in one place.'
 })
 
-const fields = 'name,cca3,flags,population,region,capital'
-const { data: countries } = await useFetch<Country[]>(`https://restcountries.com/v3.1/all?fields=${fields}`)
+const countries = ref<Country[]>(countriesJson as Country[])
 const regions = [...new Set(
 	(countries.value ?? [])
 		.map(c => c.region)
@@ -123,8 +123,8 @@ const filteredCountries = computed(() => {
         class="country-card"
       >
         <NuxtImg
-	        :src="country.flags.svg"
-	        :alt="country.flags.alt"
+	        :src="country.flag.svg"
+	        :alt="country.flag.alt"
 	        loading="lazy"
 	        fetchpriority="low"
 	        class="country-card-img"

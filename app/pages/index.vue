@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Country} from "~~/types/country";
 import WorldMap from "~~/components/WorldMap.vue";
+import countriesJson from "~~/public/countriesV4.json";
 
 const pageTitle = 'Explore Countries of the World'
 const pageDescription = 'Reliable demographic, geographic, and cultural data structured for clarity and accuracy.'
@@ -26,8 +27,7 @@ const onSearch = () => {
 	})
 }
 
-const fields = 'name,cca3,flags,population,region'
-const { data: countries } = await useFetch<Country[]>(`https://restcountries.com/v3.1/all?fields=${fields}`)
+const countries = ref<Country[]>(countriesJson as Country[])
 
 const totalCountries = computed(() =>
 	countries.value?.length ?? 0

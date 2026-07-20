@@ -1,13 +1,15 @@
+import { createResolver } from '@nuxt/kit'
 import type { Country } from './types/country'
+import countriesJson from './public/countriesV4.json'
+
+const { resolve } = createResolver(import.meta.url)
 
 const isProd = process.env.NODE_ENV === 'production'
 const interval = 60 * 60 * 24 // 24 hours
 
-async function getTopCountryRoutes() {
-	const fields = 'cca3,population'
-	const res = await fetch(`https://restcountries.com/v3.1/all?fields=${fields}`)
-	const countries: Country[] = await res.json()
-	
+function getTopCountryRoutes() {
+	const countries = countriesJson as Country[]
+
 	return countries
 		.sort((a, b) => b.population - a.population)
 		.slice(0, 15)
@@ -16,8 +18,8 @@ async function getTopCountryRoutes() {
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // @ts-ignore
-export default defineNuxtConfig(async () => {
-	const topCountryRoutes = await getTopCountryRoutes()
+export default defineNuxtConfig(() => {
+	const topCountryRoutes = getTopCountryRoutes()
 	
 	return {
 		app: {
@@ -43,6 +45,16 @@ export default defineNuxtConfig(async () => {
 			'@nuxt/image',
 			'@nuxt/content'
 		],
+		components: {
+			dirs: [
+				{
+					path: resolve('./components/content'),
+					pathPrefix: false,
+					prefix: '',
+					global: true
+				}
+			]
+		},
 		colorMode: {
 			classSuffix: '',
 			preference: 'system',
@@ -54,6 +66,7 @@ export default defineNuxtConfig(async () => {
 		sitemap: {
 			urls: [
 				'/about',
+				'/download',
 				'/privacy',
 				'/terms',
 			],

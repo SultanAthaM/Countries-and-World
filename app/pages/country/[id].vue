@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import type { Country } from '~~/types/country'
+import countriesJson from '~~/public/countriesV4.json'
 
 const route = useRoute()
-const { data: countryData } = await useFetch<Country[]>(
-	`https://restcountries.com/v3.1/alpha/${route.params.id}`
+
+const countries = countriesJson as Country[]
+const country = computed(() =>
+	countries.find(c => c.cca3 === route.params.id)
 )
 
-const country = countryData.value?.[0]
-
-if (country) {
+if (country.value) {
 	useSeoMeta({
-		title: country.name.common,
-		description: `Learn about ${country.name.common}, its population, capital, and region.`
+		title: country.value.name.common,
+		description: `Learn about ${country.value.name.common}, its population, capital, and region.`
 	})
 }
 </script>
@@ -30,8 +31,8 @@ if (country) {
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <NuxtImg
-	      :src="country.flags.svg"
-	      :alt="country.flags.alt"
+	      :src="country.flag.svg"
+	      :alt="country.flag.alt"
 	      fetchpriority="high"
 	      class="w-full rounded-lg shadow-md"
       />
@@ -49,8 +50,8 @@ if (country) {
           </ul>
           <ul class="space-y-2">
             <li><strong>Top Level Domain:</strong> {{ country.tld?.join(', ') }}</li>
-            <li><strong>Currencies:</strong> {{ Object.values(country.currencies || {}).map(c => c.name).join(', ') }}</li>
-            <li><strong>Languages:</strong> {{ Object.values(country.languages || {}).join(', ') }}</li>
+            <li><strong>Currencies:</strong> {{ country.currencies?.map(c => c.name).join(', ') }}</li>
+            <li><strong>Languages:</strong> {{ country.languages?.map(l => l.name).join(', ') }}</li>
           </ul>
         </div>
 

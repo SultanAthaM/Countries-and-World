@@ -43,6 +43,11 @@ export const navigationMenu: MenuItem[] = [
 		to: '/country'
 	},
 	{
+		key: 'nav-download',
+		label: 'Download',
+		to: '/download'
+	},
+	{
 		key: 'nav-about',
 		label: 'About',
 		to: '/about'
