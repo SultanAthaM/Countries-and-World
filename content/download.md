@@ -21,8 +21,8 @@ Download the latest version of the APK directly:
 ## 📋 Requirements
 
 - **Platform:** Android 5.0 (Lollipop) or higher
-- **File size:** Approximately 5 MB
-- **Permissions:** Internet access for fetching country data
+- **File size:** 16 MB
+- **Permissions:** Notifications
 
 ## 🔄 What's Included
 
