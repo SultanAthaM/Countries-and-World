@@ -79,7 +79,10 @@ export default defineNuxtConfig({
 		enabled: !isProd
 	},
 	nitro: {
-		preset: isProd ? 'vercel' : 'bun'
+		preset: isProd ? 'vercel' : 'bun',
+		prerender: {
+			routes: ['/about', '/download', '/privacy', '/term']
+		}
 	},
 	routeRules: {
 		'/**/*': {
