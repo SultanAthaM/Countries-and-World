@@ -1,122 +1,89 @@
 import { createResolver } from '@nuxt/kit'
-import type { Country } from './types/country'
-import countriesJson from './public/countriesV4.json'
 
 const { resolve } = createResolver(import.meta.url)
 
 const isProd = process.env.NODE_ENV === 'production'
-const interval = 60 * 60 * 24 // 24 hours
 
-function getTopCountryRoutes() {
-	const countries = countriesJson as Country[]
-
-	return countries
-		.sort((a, b) => b.population - a.population)
-		.slice(0, 15)
-		.map(c => `/country/${c.cca3}`)
-}
-
-// https://nuxt.com/docs/api/configuration/nuxt-config
-// @ts-ignore
-export default defineNuxtConfig(() => {
-	const topCountryRoutes = getTopCountryRoutes()
-	
-	return {
-		app: {
-			head: {
-				htmlAttrs: {
-					lang: 'en'
-				},
-				title: 'Countries & World',
-				titleTemplate: '%s | Countries & World'
+export default defineNuxtConfig({
+	app: {
+		head: {
+			htmlAttrs: {
+				lang: 'en'
+			},
+			title: 'Countries & World',
+			titleTemplate: '%s | Countries & World'
+		}
+	},
+	css: [
+		'/css/main.css',
+	],
+	future: {
+		compatibilityVersion: 4
+	},
+	compatibilityDate: '2024-04-03',
+	modules: [
+		'@nuxtjs/tailwindcss',
+		'@nuxtjs/color-mode',
+		'@nuxtjs/sitemap',
+		'@nuxt/image',
+		'@nuxt/content'
+	],
+	components: {
+		dirs: [
+			{
+				path: resolve('./components/content'),
+				pathPrefix: false,
+				prefix: '',
+				global: true
 			}
-			},
-		css: [
-			'/css/main.css',
+		]
+	},
+	colorMode: {
+		classSuffix: '',
+		preference: 'system',
+		fallback: 'light',
+	},
+	site: {
+		url: 'https://countries-and-world.vercel.app/'
+	},
+	sitemap: {
+		urls: [
+			'/about',
+			'/download',
+			'/privacy',
+			'/terms',
 		],
-		future: {
-			compatibilityVersion: 4
-		},
-		compatibilityDate: '2024-04-03',
-		modules: [
-			'@nuxtjs/tailwindcss',
-			'@nuxtjs/color-mode',
-			'@nuxtjs/sitemap',
-			'@nuxt/image',
-			'@nuxt/content'
+	},
+	image: {
+		format: [
+			'avif',
+			'webp'
 		],
-		components: {
-			dirs: [
-				{
-					path: resolve('./components/content'),
-					pathPrefix: false,
-					prefix: '',
-					global: true
-				}
-			]
+		provider: 'vercel'
+	},
+	content: {
+		database: {
+			type: 'sqlite',
+			filename: ':memory:'
 		},
-		colorMode: {
-			classSuffix: '',
-			preference: 'system',
-			fallback: 'light',
-		},
-		site: {
-			url: 'https://countries-and-world.vercel.app/'
-		},
-		sitemap: {
-			urls: [
-				'/about',
-				'/download',
-				'/privacy',
-				'/terms',
-			],
-		},
-		image: {
-			format: [
-				'avif',
-				'webp'
-			],
-			provider: 'vercel'
-		},
-		content: {
-			database: {
-				type: 'sqlite',
-				filename: ':memory:'
-			},
-			build: {
-				markdown: {
-					toc: {
-						depth: 3,
-						searchDepth: 3
-					}
+		build: {
+			markdown: {
+				toc: {
+					depth: 3,
+					searchDepth: 3
 				}
 			}
-		},
-		devtools: {
-			enabled: !isProd
-		},
-		nitro: {
-			preset: isProd ? 'vercel' : 'bun'
-		},
-		routeRules: {
-			'/**': {
-				prerender: true
-			},
-			'/country': {
-				prerender: true
-			},
-			...Object.fromEntries(
-				topCountryRoutes.map(route => [
-					route,
-					{
-						prerender: true,
-						revalidate: interval
-					}
-					])
-			),
-			'/country/*': {
-				isr: interval
-			}
+		}
+	},
+	devtools: {
+		enabled: !isProd
+	},
+	nitro: {
+		preset: isProd ? 'vercel' : 'bun'
+	},
+	routeRules: {
+		'/**/*': {
+			prerender: true
 		}
 	}
 })
